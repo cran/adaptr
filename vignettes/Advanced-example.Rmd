@@ -137,7 +137,8 @@ The `setup_trial_binom()` function uses *beta-binomial conjugate prior models*
 in each arm, with `beta(1, 1)` priors. These priors are uniform (≈
 "non-informative") on the probability scale and corresponds to the same amount
 of information as provided by 2 patients (1 with and 1 without an event),
-described in greater detail by, e.g., *Ryan et al, 2019* ([10.1136/bmjopen-2018-024256](https://doi.org/10.1136/bmjopen-2018-024256)).
+described in greater detail by, e.g., *Ryan et al, 2019*
+([10.1136/bmjopen-2018-024256](https://doi.org/10.1136/bmjopen-2018-024256)).
 
 Our custom function for generating posterior draws also uses beta-binomial
 conjugate prior models, but with informative priors. Informative
@@ -399,5 +400,12 @@ setup_trial(
 ```
 
 As `setup_trial()` runs with no errors or warnings, the custom trial has been
-successfully specified and may be run by `run_trial()` or `run_trials()`.
+successfully specified and may be run by `run_trial()` or `run_trials()`. If
+the custom functions provided to `setup_trial()` calls other custom functions
+(or uses objects defined by the user outside these functions) or if functions
+loaded from non-base R packages are used, please be aware that exporting these
+objects/functions or prefixing them with their namespace is necessary if
+simulations are conducted using multiple cores. See `run_trial()` for additional
+details.
+func
 

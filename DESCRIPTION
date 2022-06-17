@@ -1,7 +1,7 @@
 Package: adaptr
 Title: Adaptive Trial Simulator
-Version: 1.0.0
-Date: 2022-03-14
+Version: 1.1.0
+Date: 2022-06-16
 Authors@R: 
     c(person("Anders", "Granholm",
              email = "andersgran@gmail.com",
@@ -31,11 +31,11 @@ NeedsCompilation: no
 URL: https://incept.dk/, https://github.com/INCEPTdk/adaptr/,
         https://inceptdk.github.io/adaptr/
 BugReports: https://github.com/INCEPTdk/adaptr/issues/
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Suggests: covr, ggplot2, rmarkdown, knitr, testthat, vdiffr
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-Packaged: 2022-03-14 15:18:22 UTC; agra0037
+Packaged: 2022-06-17 07:39:21 UTC; agra0037
 Author: Anders Granholm [aut, cre] (<https://orcid.org/0000-0001-5799-7655>),
   Benjamin Skov Kaas-Hansen [aut]
     (<https://orcid.org/0000-0003-1023-0371>),
@@ -43,4 +43,4 @@ Author: Anders Granholm [aut, cre] (<https://orcid.org/0000-0001-5799-7655>),
   Theis Lange [ctb] (<https://orcid.org/0000-0001-6807-8347>)
 Maintainer: Anders Granholm <andersgran@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-03-15 18:50:08 UTC
+Date/Publication: 2022-06-17 08:20:18 UTC

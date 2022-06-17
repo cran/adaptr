@@ -13,7 +13,7 @@
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("Loading adaptr package (version ", packageVersion("adaptr"), ").\n",
                         "See 'help(\"adaptr\")' or 'vignette(\"Overview\", \"adaptr\")' for help.\n",
-                        "Further information available on https://github.com/INCEPTdk/adaptr/.")
+                        "Further information available on https://inceptdk.github.io/adaptr/.")
 }
 
 
@@ -21,7 +21,7 @@
 #' Handle well-known "problem" of pseudo-global variables
 #'
 #' Handles "Undefined global functions or variables" after R CMD check (in
-#' [plot_status] and [plot_history]).
+#' [plot_status()] and [plot_history()]).
 #' See [https://stackoverflow.com/a/12429344].
 #'
 #' @param libname not used.

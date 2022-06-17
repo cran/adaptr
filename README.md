@@ -5,11 +5,13 @@
 
 <!-- badges: start -->
 
-![Version](https://img.shields.io/badge/version-1.0.0-informational.svg)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/adaptr)](https://cran.r-project.org/package=adaptr)
 [![R-CMD-check](https://github.com/INCEPTdk/adaptr/workflows/R-CMD-check/badge.svg)](https://github.com/INCEPTdk/adaptr/actions/)
+[![status](https://joss.theoj.org/papers/10.21105/joss.04284/status.svg)](https://joss.theoj.org/papers/10.21105/joss.04284)
 [![codecov](https://codecov.io/gh/INCEPTdk/adaptr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/INCEPTdk/adaptr/)
-![CRAN
-status](https://img.shields.io/badge/CRAN-submitted-blueviolet.svg)
+![total downloads from RStudio
+mirror](https://cranlogs.r-pkg.org/badges/grand-total/adaptr)
 <!-- badges: end -->
 
 The `adaptr` package simulates adaptive clinical trials using adaptive
@@ -21,18 +23,16 @@ supported by a grant from [Sygeforsikringen
 “danmark”](https://www.sygeforsikring.dk/).
 
 The full package documentation is available as a stand-alone website at
-<https://inceptdk.github.io/adaptr/>.
+[inceptdk.github.io/adaptr](https://inceptdk.github.io/adaptr/).
 
 ## Installation
 
-`adaptr` is not yet on [CRAN](https://cran.r-project.org/) (it should be
-shortly, though), but you can install the package directly from
-[GitHub](https://github.com/INCEPTdk/adaptr/) using the `remotes`
-package (install it with `install.packages("remotes")` if you do not
-already have it):
-
 ``` r
-# install.packages("remotes")
+# The easiest way is to install from CRAN directly
+install.packages("adaptr")
+
+# But you can also get the newest version from GitHub (requires the remotes package)
+# install.packages("remotes") 
 remotes::install_github("INCEPTdk/adaptr")
 ```
 
@@ -46,9 +46,9 @@ general `setup_trial()` function, or one of the special case functions,
 
 ``` r
 library(adaptr)
-#> Loading adaptr package (version 1.0.0).
+#> Loading adaptr package (version 1.1.0).
 #> See 'help("adaptr")' or 'vignette("Overview", "adaptr")' for help.
-#> Further information available on https://github.com/INCEPTdk/adaptr/.
+#> Further information available on https://inceptdk.github.io/adaptr/.
 
 # Setup a trial using a binary, binomially distributed, undesirable outcome
 binom_trial <- setup_trial_binom(
@@ -171,7 +171,7 @@ print(res_sum, digits = 1)
 #> * Ideal design percentage: 100.0%
 #> 
 #> Simulation details:
-#> * Simulation time: 0.347 secs
+#> * Simulation time: 0.388 secs
 #> * Base random seed: 67890
 #> * Credible interval width: 95%
 #> * Number of posterior draws: 5000
@@ -237,21 +237,24 @@ If using the package, please consider citing it:
 ``` r
 citation(package = "adaptr")
 #> 
-#> To cite package 'adaptr' in publications use:
+#> To cite adaptr in publications use:
 #> 
-#>   Anders Granholm and Benjamin Skov Kaas-Hansen (2022). adaptr:
-#>   Adaptive Trial Simulator. https://incept.dk/,
-#>   https://github.com/INCEPTdk/adaptr/,
-#>   https://inceptdk.github.io/adaptr/.
+#>   Granholm A, Jensen AKG, Lange T, Kaas-Hansen BS (2022). adaptr: an R
+#>   package for simulating and comparing adaptive clinical trials.
+#>   Journal of Open Source Software, 7(72), 4284. URL
+#>   https://doi.org/10.21105/joss.04284.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Manual{,
-#>     title = {adaptr: Adaptive Trial Simulator},
-#>     author = {Anders Granholm and Benjamin Skov Kaas-Hansen},
+#>   @Article{,
+#>     title = {{adaptr}: an R package for simulating and comparing adaptive clinical trials},
+#>     author = {Anders Granholm and Aksel Karl Georg Jensen and Theis Lange and Benjamin Skov Kaas-Hansen},
+#>     journal = {Journal of Open Source Software},
 #>     year = {2022},
-#>     note = {https://incept.dk/,
-#> https://github.com/INCEPTdk/adaptr/,
-#> https://inceptdk.github.io/adaptr/},
+#>     volume = {7},
+#>     number = {72},
+#>     pages = {4284},
+#>     url = {https://doi.org/10.21105/joss.04284},
+#>     doi = {10.21105/joss.04284},
 #>   }
 ```
