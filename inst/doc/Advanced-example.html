@@ -14,7 +14,19 @@
 
 <title>Advanced example</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -126,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -142,33 +334,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This vignette provides an <strong>advanced</strong> example on how to:</p>
+<p>This vignette provides an <strong>advanced</strong> example on how
+to:</p>
 <ol style="list-style-type: decimal">
-<li>Specify a trial design with <code>setup_trial()</code> using user-written functions for generating outcomes and drawing samples from the posterior distributions</li>
-<li>Transform the raw outcome estimates in a way appropriate for your needs</li>
+<li>Specify a trial design with <code>setup_trial()</code> using
+user-written functions for generating outcomes and drawing samples from
+the posterior distributions</li>
+<li>Transform the raw outcome estimates in a way appropriate for your
+needs</li>
 <li>Derive and specify prior probability distributions</li>
 </ol>
-<p>The manual for <code>setup_trial()</code> contains another example (more succinctly annotated); see the <strong>Examples</strong> sections in <code>?setup_trial()</code>. As an alternative to using custom functions, the convenience functions <code>setup_trial_binom()</code> and <code>setup_trial_norm()</code> may be used for simulating trials with binary, binomially distributed or continuous, normally distributed outcomes, using sensible defaults and flat priors.</p>
-<p>This vignette is intended for advanced users and assume general knowledge of writing R functions and specifying prior distributions for (simple, conjugate) Bayesian models. Before reading this vignette, we highly encourage you to read the Basic examples vignette (see <code>vignette(&quot;Basic-examples&quot;, &quot;adaptr&quot;)</code>) with more basic examples using the simplified <code>setup_trial_binom()</code> function and a thorough discussion of the settings applicable to all trial designs.</p>
+<p>The manual for <code>setup_trial()</code> contains another example
+(more succinctly annotated); see the <strong>Examples</strong> sections
+in <code>?setup_trial()</code>. As an alternative to using custom
+functions, the convenience functions <code>setup_trial_binom()</code>
+and <code>setup_trial_norm()</code> may be used for simulating trials
+with binary, binomially distributed or continuous, normally distributed
+outcomes, using sensible defaults and flat priors.</p>
+<p>This vignette is intended for advanced users and assume general
+knowledge of writing R functions and specifying prior distributions for
+(simple, conjugate) Bayesian models. Before reading this vignette, we
+highly encourage you to read the Basic examples vignette (see
+<code>vignette(&quot;Basic-examples&quot;, &quot;adaptr&quot;)</code>) with more basic
+examples using the simplified <code>setup_trial_binom()</code> function
+and a thorough discussion of the settings applicable to all trial
+designs.</p>
 <div id="preamble" class="section level2">
 <h2>Preamble</h2>
-<p>In this example, we set up a trial with three <code>arms</code>, one of which is the <code>control</code>, and an undesirable binary outcome (e.g., mortality).</p>
-<p>This examples creates a custom version of the <code>setup_trial_binom()</code> function using non-flat priors for the event rates in each arm (<code>setup_trial_binom()</code> uses flat priors), and returning event probabilities as percentages (instead of fractions), to illustrate the use of a custom function to summarise the raw outcome data.</p>
-<p>While <code>setup_trial()</code> attempts to validate the custom functions by assessing their output during trial specification, some edge cases might elude this validation. We, therefore, urge users specifying custom functions to carefully test more complex functions themselves before actual use.</p>
-<p>If you go through the trouble of writing a nice set of functions for generating outcomes and sampling from posterior distributions, please consider adding these to the package. This way, others can benefit from your work and it helps validate them. See how on the <a href="https://github.com/INCEPTdk/adaptr#contributing">GitHub</a> page under <strong>Contributing</strong>.</p>
-<p>Although the user-written custom functions below do not depend on the <code>adaptr</code> package, as the first thing we load the package:</p>
+<p>In this example, we set up a trial with three <code>arms</code>, one
+of which is the <code>control</code>, and an undesirable binary outcome
+(e.g., mortality).</p>
+<p>This examples creates a custom version of the
+<code>setup_trial_binom()</code> function using non-flat priors for the
+event rates in each arm (<code>setup_trial_binom()</code> uses flat
+priors), and returning event probabilities as percentages (instead of
+fractions), to illustrate the use of a custom function to summarise the
+raw outcome data.</p>
+<p>While <code>setup_trial()</code> attempts to validate the custom
+functions by assessing their output during trial specification, some
+edge cases might elude this validation. We, therefore, urge users
+specifying custom functions to carefully test more complex functions
+themselves before actual use.</p>
+<p>If you go through the trouble of writing a nice set of functions for
+generating outcomes and sampling from posterior distributions, please
+consider adding these to the package. This way, others can benefit from
+your work and it helps validate them. See how on the <a href="https://github.com/INCEPTdk/adaptr#contributing">GitHub</a> page
+under <strong>Contributing</strong>.</p>
+<p>Although the user-written custom functions below do not depend on the
+<code>adaptr</code> package, as the first thing we load the package:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adaptr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading adaptr package (version 1.1.0).</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading adaptr package (version 1.1.1).</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; See &#39;help(&quot;adaptr&quot;)&#39; or &#39;vignette(&quot;Overview&quot;, &quot;adaptr&quot;)&#39; for help.</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Further information available on https://inceptdk.github.io/adaptr/.</span></span></code></pre></div>
 <p>–and then set the global seed to ensure reproducible results:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">89</span>)</span></code></pre></div>
-<p>We define the functions and (for illustration purposes and as a sanity check) print their outputs. They are, then, invoked by <code>setup_trial()</code> (in the final code chunk of this vignette).</p>
+<p>We define the functions and (for illustration purposes and as a
+sanity check) print their outputs. They are, then, invoked by
+<code>setup_trial()</code> (in the final code chunk of this
+vignette).</p>
 </div>
 <div id="functions-for-generating-outcomes" class="section level2">
 <h2>Functions for generating outcomes</h2>
-<p>This function should take a single argument (<code>allocs</code>), a character vector containing the allocations (names of trial <code>arms</code>) of all patients included since the last adaptive analysis. The function must return a <em>numeric</em> vector, regardless of actual outcome type (so, e.g., categorical outcomes must be encoded as numeric). The returned numeric vector must be of the same length, and the values in the same order as <code>allocs</code>. That is, the third element of <code>allocs</code> specifies the allocation of the third patient randomised since the last adaptive analysis, and (correspondingly) the third element of the returned vector is that patient’s outcome.</p>
-<p>It sounds complicated, but it becomes clearer when we actually specify the function (essentially a re-implementation of the built-in function used by <code>setup_trial_binom()</code>):</p>
+<p>This function should take a single argument (<code>allocs</code>), a
+character vector containing the allocations (names of trial
+<code>arms</code>) of all patients included since the last adaptive
+analysis. The function must return a <em>numeric</em> vector, regardless
+of actual outcome type (so, e.g., categorical outcomes must be encoded
+as numeric). The returned numeric vector must be of the same length, and
+the values in the same order as <code>allocs</code>. That is, the third
+element of <code>allocs</code> specifies the allocation of the third
+patient randomised since the last adaptive analysis, and
+(correspondingly) the third element of the returned vector is that
+patient’s outcome.</p>
+<p>It sounds complicated, but it becomes clearer when we actually
+specify the function (essentially a re-implementation of the built-in
+function used by <code>setup_trial_binom()</code>):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>get_ys_binom_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(allocs) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Binary outcome coded as 0/1 - prepare returned vector of appropriate length</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="fu">length</span>(allocs))</span>
@@ -190,7 +430,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return outcome vector</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  y</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>To illustrate how the function works, we first generate random allocations for 50 patients using equal allocation probabilities, the default behaviour of <code>sample()</code>. By enclosing the call in parentheses, the resulting allocations are printed:</p>
+<p>To illustrate how the function works, we first generate random
+allocations for 50 patients using equal allocation probabilities, the
+default behaviour of <code>sample()</code>. By enclosing the call in
+parentheses, the resulting allocations are printed:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(allocs <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Experimental arm A&quot;</span>, <span class="st">&quot;Experimental arm  B&quot;</span>),</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;Control&quot;             &quot;Experimental arm  B&quot; &quot;Experimental arm  B&quot;</span></span>
@@ -217,13 +460,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="functions-for-drawing-posterior-samples" class="section level2">
 <h2>Functions for drawing posterior samples</h2>
-<p>The <code>setup_trial_binom()</code> function uses <em>beta-binomial conjugate prior models</em> in each arm, with <code>beta(1, 1)</code> priors. These priors are uniform (≈ “non-informative”) on the probability scale and corresponds to the same amount of information as provided by 2 patients (1 with and 1 without an event), described in greater detail by, e.g., <em>Ryan et al, 2019</em> (<a href="https://doi.org/10.1136/bmjopen-2018-024256">10.1136/bmjopen-2018-024256</a>).</p>
-<p>Our custom function for generating posterior draws also uses beta-binomial conjugate prior models, but with informative priors. Informative priors may prevent undue influence of random, early fluctuations in a trial by pulling posterior estimates closer to the prior when limited data are available.</p>
-<p>We seek relatively weakly informative priors centred on previous knowledge (or beliefs), and so before we can actually define a function for generating posterior draws based on informative priors, we need to derive such a prior.</p>
+<p>The <code>setup_trial_binom()</code> function uses <em>beta-binomial
+conjugate prior models</em> in each arm, with <code>beta(1, 1)</code>
+priors. These priors are uniform (≈ “non-informative”) on the
+probability scale and corresponds to the same amount of information as
+provided by 2 patients (1 with and 1 without an event), described in
+greater detail by, e.g., <em>Ryan et al, 2019</em> (<a href="https://doi.org/10.1136/bmjopen-2018-024256">10.1136/bmjopen-2018-024256</a>).</p>
+<p>Our custom function for generating posterior draws also uses
+beta-binomial conjugate prior models, but with informative priors.
+Informative priors may prevent undue influence of random, early
+fluctuations in a trial by pulling posterior estimates closer to the
+prior when limited data are available.</p>
+<p>We seek relatively weakly informative priors centred on previous
+knowledge (or beliefs), and so before we can actually define a function
+for generating posterior draws based on informative priors, we need to
+derive such a prior.</p>
 <div id="informative-priors" class="section level3">
 <h3>Informative priors</h3>
-<p>We assume that we have prior knowledge corresponding to a belief that the best estimate for the true event probability in the <code>control</code> arm is 0.25 (25%), and that the true event probability is between 0.15 and 0.35 (15-35%) with 95% probability. The mean of a beta distribution is simply <code>[number of events]/[number of patients]</code>.</p>
-<p>To derive a beta distribution that reflects this prior belief, we use <code>find_beta_params()</code>, a helper function included in the <code>adaptr</code> (see <code>?find_beta_params</code> for details):</p>
+<p>We assume that we have prior knowledge corresponding to a belief that
+the best estimate for the true event probability in the
+<code>control</code> arm is 0.25 (25%), and that the true event
+probability is between 0.15 and 0.35 (15-35%) with 95% probability. The
+mean of a beta distribution is simply
+<code>[number of events]/[number of patients]</code>.</p>
+<p>To derive a beta distribution that reflects this prior belief, we use
+<code>find_beta_params()</code>, a helper function included in the
+<code>adaptr</code> (see <code>?find_beta_params</code> for
+details):</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_beta_params</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theta =</span> <span class="fl">0.25</span>, <span class="co"># Event ratio</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">boundary =</span> <span class="st">&quot;lower&quot;</span>,</span>
@@ -232,29 +495,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   alpha beta      p2.5     p50.0     p97.5</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    15   45 0.1498208 0.2472077 0.3659499</span></span></code></pre></div>
-<p>We thus see that our prior belief prior roughly corresponds to previous randomisation of 60 patients of whom 15 (<code>alpha</code>) experienced the event and 45 (<code>beta</code>) did not.</p>
-<p>Even though we may expect event probabilities to differ in the non-control arms, for this example we consider this prior appropriate for all arms as we consider event probabilities smaller/larger than those represented by the prior unlikely.</p>
-<p>Below, we illustrate the effects of this prior compared to the default <code>beta(1, 1)</code> prior used in <code>setup_trial_binom()</code> for a single trial arm with 20 patients randomised, 12 events and 8 non-events. This corresponds to an estimated event probability of 0.6 (60%), far more than the expected 0.25 (25%). This could come about by random fluctuations when few patients have been randomised, even if our prior beliefs are correct.</p>
+<p>We thus see that our prior belief prior roughly corresponds to
+previous randomisation of 60 patients of whom 15 (<code>alpha</code>)
+experienced the event and 45 (<code>beta</code>) did not.</p>
+<p>Even though we may expect event probabilities to differ in the
+non-control arms, for this example we consider this prior appropriate
+for all arms as we consider event probabilities smaller/larger than
+those represented by the prior unlikely.</p>
+<p>Below, we illustrate the effects of this prior compared to the
+default <code>beta(1, 1)</code> prior used in
+<code>setup_trial_binom()</code> for a single trial arm with 20 patients
+randomised, 12 events and 8 non-events. This corresponds to an estimated
+event probability of 0.6 (60%), far more than the expected 0.25 (25%).
+This could come about by random fluctuations when few patients have been
+randomised, even if our prior beliefs are correct.</p>
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
-<p>Next, we illustrate the effects on the same prior after 200 patients have been randomised to the same arm, with 56 events and 144 non-events, which corresponds to an estimated event probability of 0.28 (28%), which is more similar to the expected event probability.</p>
+<p>Next, we illustrate the effects on the same prior after 200 patients
+have been randomised to the same arm, with 56 events and 144 non-events,
+which corresponds to an estimated event probability of 0.28 (28%), which
+is more similar to the expected event probability.</p>
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
-<p>When comparing to the previous plot, we clearly see that once more patients have been randomised, the larger sample of observed data starts to dominate the posterior, so that the prior exerts less influence on the posterior distribution (both posterior distributions are very alike despite the very different prior distributions).</p>
+<p>When comparing to the previous plot, we clearly see that once more
+patients have been randomised, the larger sample of observed data starts
+to dominate the posterior, so that the prior exerts less influence on
+the posterior distribution (both posterior distributions are very alike
+despite the very different prior distributions).</p>
 </div>
 <div id="defining-the-function-to-generate-posterior-draws" class="section level3">
 <h3>Defining the function to generate posterior draws</h3>
-<p>There are a number of important things to be aware of when specifying this function. First, it must accept all the following arguments (with the exact same names, <em>even</em> if you do not used them in your function):</p>
+<p>There are a number of important things to be aware of when specifying
+this function. First, it must accept all the following arguments (with
+the exact same names, <em>even</em> if you do not used them in your
+function):</p>
 <ul>
-<li><code>arms</code>: character vector of the <em>currently active</em> <code>arms</code> in the trial.</li>
-<li><code>allocs</code>: character vector of the allocations (trial <code>arms</code>) of <em>all</em> patients randomised in the trial, <em>including</em> those randomised to <code>arms</code> that are no longer active.</li>
-<li><code>ys</code>: numeric vector of the outcomes of <em>all</em> patients randomised in the trial, <em>including</em> those randomised to <code>arms</code> that are no longer active.</li>
-<li><code>control</code>: single character, the <em>current</em> <code>control</code> arm; <code>NULL</code> in trials without a common <code>control</code>.</li>
-<li><code>n_draws</code>: single integer, the number of posterior draws to generate for <em>each</em> arm.</li>
+<li><code>arms</code>: character vector of the <em>currently active</em>
+<code>arms</code> in the trial.</li>
+<li><code>allocs</code>: character vector of the allocations (trial
+<code>arms</code>) of <em>all</em> patients randomised in the trial,
+<em>including</em> those randomised to <code>arms</code> that are no
+longer active.</li>
+<li><code>ys</code>: numeric vector of the outcomes of <em>all</em>
+patients randomised in the trial, <em>including</em> those randomised to
+<code>arms</code> that are no longer active.</li>
+<li><code>control</code>: single character, the <em>current</em>
+<code>control</code> arm; <code>NULL</code> in trials without a common
+<code>control</code>.</li>
+<li><code>n_draws</code>: single integer, the number of posterior draws
+to generate for <em>each</em> arm.</li>
 </ul>
-<p>Alternatively, unused arguments can be left out and the ellipsis (<code>...</code>) included as the final argument in your function.</p>
-<p>Second, the order of <code>allocs</code> and <code>ys</code> must match: the fifth element of <code>allocs</code> represents the allocation of the fifth patient, while the fifth element of <code>ys</code> represent the outcome of the same patient.</p>
-<p>Third, <code>allocs</code> and <code>ys</code> are provided for <strong>all</strong> patients, including those randomised to <code>arms</code> that are no longer active. This is done as users in some situations may want to use these data when generating posterior draws for the other (and currently <strong>active</strong>) <code>arms</code>.</p>
-<p>Fourth, <code>adaptr</code> does not restrict how posterior samples are drawn. Consequently, Markov chain Monte Carlo- or variational inference-based methods may be used, and other packages supplying such functionality may be called by user-provided functions. However, using more complex methods than simple conjugate models substantially increases simulation run time. Consequently, simpler models are well-suited for use in simulations.</p>
-<p>Fifth, the function must return a numeric <code>matrix</code> with <code>length(arms)</code> columns and <code>n_draws</code> rows, with the <strong>currently active</strong> <code>arms</code> as column names. That is, each row must contain one posterior draw for each arm. <code>NA</code>’s are not allowed, so even if no patients have been randomised to an arm yet, valid numeric values should be returned (e.g., drawn from the prior or from another very diffuse <em>posterior</em> distribution). Even if the outcome is not truly numeric, both the vector of outcomes provided to the function (<code>ys</code>) and the returned <code>matrix</code> with posterior draws must be encoded as numeric.</p>
+<p>Alternatively, unused arguments can be left out and the ellipsis
+(<code>...</code>) included as the final argument in your function.</p>
+<p>Second, the order of <code>allocs</code> and <code>ys</code> must
+match: the fifth element of <code>allocs</code> represents the
+allocation of the fifth patient, while the fifth element of
+<code>ys</code> represent the outcome of the same patient.</p>
+<p>Third, <code>allocs</code> and <code>ys</code> are provided for
+<strong>all</strong> patients, including those randomised to
+<code>arms</code> that are no longer active. This is done as users in
+some situations may want to use these data when generating posterior
+draws for the other (and currently <strong>active</strong>)
+<code>arms</code>.</p>
+<p>Fourth, <code>adaptr</code> does not restrict how posterior samples
+are drawn. Consequently, Markov chain Monte Carlo- or variational
+inference-based methods may be used, and other packages supplying such
+functionality may be called by user-provided functions. However, using
+more complex methods than simple conjugate models substantially
+increases simulation run time. Consequently, simpler models are
+well-suited for use in simulations.</p>
+<p>Fifth, the function must return a numeric <code>matrix</code> with
+<code>length(arms)</code> columns and <code>n_draws</code> rows, with
+the <strong>currently active</strong> <code>arms</code> as column names.
+That is, each row must contain one posterior draw for each arm.
+<code>NA</code>’s are not allowed, so even if no patients have been
+randomised to an arm yet, valid numeric values should be returned (e.g.,
+drawn from the prior or from another very diffuse <em>posterior</em>
+distribution). Even if the outcome is not truly numeric, both the vector
+of outcomes provided to the function (<code>ys</code>) and the returned
+<code>matrix</code> with posterior draws must be encoded as numeric.</p>
 <p>With this in mind, we are ready to specify the function:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>get_draws_binom_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(arms, allocs, ys, control, n_draws) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Setup a list to store the posterior draws for each arm</span></span>
@@ -282,8 +599,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate RAW outcome estimates below)</span></span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do.call</span>(cbind, draws) <span class="sc">*</span> <span class="dv">100</span></span>
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>We now call the function using the previously generated <code>allocs</code> and <code>ys</code>.</p>
-<p>To avoid cluttering, we only generate 10 posterior draws from each arm in this example:</p>
+<p>We now call the function using the previously generated
+<code>allocs</code> and <code>ys</code>.</p>
+<p>To avoid cluttering, we only generate 10 posterior draws from each
+arm in this example:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_draws_binom_custom</span>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only currently ACTIVE arms, but all are considered active at this time</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">arms =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Experimental arm A&quot;</span>, <span class="st">&quot;Experimental arm B&quot;</span>),</span>
@@ -305,16 +624,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8,] 25.17899           33.29374           30.87149</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9,] 23.72043           27.78537           29.89836</span></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10,] 30.50004           28.43694           26.62115</span></span></code></pre></div>
-<p><strong>Importantly</strong>, less than 100 posterior draws from each arm is not allowed when setting up the trial specification, to avoid unstable results (see <code>setup_trial_binom()</code>).</p>
+<p><strong>Importantly</strong>, less than 100 posterior draws from each
+arm is not allowed when setting up the trial specification, to avoid
+unstable results (see <code>setup_trial_binom()</code>).</p>
 </div>
 </div>
 <div id="specifying-the-function-to-calculate-raw-outcome-estimates" class="section level2">
 <h2>Specifying the function to calculate raw outcome estimates</h2>
-<p>Finally, a custom function may be specified to calculate <strong>raw</strong> summary estimates in each arm; these raw estimates are <em>not</em> posterior estimates, but can be considered the maximum likelihood point estimates in this example). This function must take a numeric vector (all outcomes in an arm) and return a single numeric value. This function is called separately for each arm. Because we express results as <em>percentages</em> and not <em>proportions</em> in this example, this function simply calculates the outcome percentage in each arm:</p>
+<p>Finally, a custom function may be specified to calculate
+<strong>raw</strong> summary estimates in each arm; these raw estimates
+are <em>not</em> posterior estimates, but can be considered the maximum
+likelihood point estimates in this example). This function must take a
+numeric vector (all outcomes in an arm) and return a single numeric
+value. This function is called separately for each arm. Because we
+express results as <em>percentages</em> and not <em>proportions</em> in
+this example, this function simply calculates the outcome percentage in
+each arm:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fun_raw_est_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(ys) {</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(ys) <span class="sc">*</span> <span class="dv">100</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>We now call this function on the outcomes in the <code>&quot;Control&quot;</code> arm, as an example:</p>
+<p>We now call this function on the outcomes in the
+<code>&quot;Control&quot;</code> arm, as an example:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Raw outcome percentage estimate in the &#39;Control&#39; group: %.1f%%&quot;</span>, </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fun_raw_est_custom</span>(ys[allocs <span class="sc">==</span> <span class="st">&quot;Control&quot;</span>])</span>
@@ -323,7 +653,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="setup-the-trial-specification" class="section level2">
 <h2>Setup the trial specification</h2>
-<p>With all the functions defined, we can now setup the trial specification - as stated above, some validation of all the custom functions is carried out when the trial is setup:</p>
+<p>With all the functions defined, we can now setup the trial
+specification - as stated above, some validation of all the custom
+functions is carried out when the trial is setup:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setup_trial</span>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">arms =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Experimental arm A&quot;</span>, <span class="st">&quot;Experimental arm B&quot;</span>),</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -384,7 +716,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 1 (no softening)</span></span>
 <span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Additional info: Trial using beta-binomial conjugate prior models and beta(15, 45) priors in each arm.</span></span></code></pre></div>
-<p>As <code>setup_trial()</code> runs with no errors or warnings, the custom trial has been successfully specified and may be run by <code>run_trial()</code> or <code>run_trials()</code>. If the custom functions provided to <code>setup_trial()</code> calls other custom functions (or uses objects defined by the user outside these functions) or if functions loaded from non-base R packages are used, please be aware that exporting these objects/functions or prefixing them with their namespace is necessary if simulations are conducted using multiple cores. See <code>run_trial()</code> for additional details. func</p>
+<p>As <code>setup_trial()</code> runs with no errors or warnings, the
+custom trial has been successfully specified and may be run by
+<code>run_trial()</code> or <code>run_trials()</code>. If the custom
+functions provided to <code>setup_trial()</code> calls other custom
+functions (or uses objects defined by the user outside these functions)
+or if functions loaded from non-base R packages are used, please be
+aware that exporting these objects/functions or prefixing them with
+their namespace is necessary if simulations are conducted using multiple
+cores. See <code>run_trial()</code> for additional details. func</p>
 </div>
 
 

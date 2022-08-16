@@ -14,7 +14,19 @@
 
 <title>Overview</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -126,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -142,19 +334,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>The <code>adaptr</code> package simulates adaptive clinical trials using adaptive stopping, adaptive arm dropping and/or response-adaptive randomisation.</p>
-<p>The package has been developed as part of the <a href="https://incept.dk/">INCEPT (Intensive Care Platform Trial) project</a>, funded primarily by a grant from <a href="https://www.sygeforsikring.dk/">Sygeforsikringen “danmark”</a>.</p>
+<p>The <code>adaptr</code> package simulates adaptive clinical trials
+using adaptive stopping, adaptive arm dropping and/or response-adaptive
+randomisation.</p>
+<p>The package has been developed as part of the <a href="https://incept.dk/">INCEPT (Intensive Care Platform Trial)
+project</a>, funded primarily by a grant from <a href="https://www.sygeforsikring.dk/">Sygeforsikringen
+“danmark”</a>.</p>
 <div id="basic-example" class="section level2">
 <h2>Basic example</h2>
 <p>First, load the package:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adaptr)</span></code></pre></div>
 <div id="set-up-trial" class="section level3">
 <h3>Set up trial</h3>
-<p>Then, setup a trial with the desired specifications. <code>adaptr</code> offers the general purpose function <code>setup_trial()</code>, but here we use the built-in <code>setup_trial_binom()</code> for a trial with a binary, binomially distributed, undesirable outcome such as mortality (<code>adaptr</code> also includes <code>setup_trial_norm()</code> for continuous, normally distributed outcomes). The example trial specification has three characteristics:</p>
+<p>Then, setup a trial with the desired specifications.
+<code>adaptr</code> offers the general purpose function
+<code>setup_trial()</code>, but here we use the built-in
+<code>setup_trial_binom()</code> for a trial with a binary, binomially
+distributed, undesirable outcome such as mortality (<code>adaptr</code>
+also includes <code>setup_trial_norm()</code> for continuous, normally
+distributed outcomes). The example trial specification has three
+characteristics:</p>
 <ul>
-<li>The allocation probability to each arm cannot be lower than 15% (<code>min_probs</code>).</li>
-<li>Equivalence stopping rule: if the simulation yields a 90% probability (<code>equivalence_prob</code>) of treatment differences being &lt; 5 %-points (<code>equivalence_diff</code>), the trial is stopped.</li>
-<li>We soften allocation ratios (<code>soften_power</code>) by a constant factor.</li>
+<li>The allocation probability to each arm cannot be lower than 15%
+(<code>min_probs</code>).</li>
+<li>Equivalence stopping rule: if the simulation yields a 90%
+probability (<code>equivalence_prob</code>) of treatment differences
+being &lt; 5 %-points (<code>equivalence_diff</code>), the trial is
+stopped.</li>
+<li>We soften allocation ratios (<code>soften_power</code>) by a
+constant factor.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>binom_trial <span class="ot">&lt;-</span> <span class="fu">setup_trial_binom</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">arms =</span> <span class="fu">c</span>(<span class="st">&quot;Arm A&quot;</span>, <span class="st">&quot;Arm B&quot;</span>, <span class="st">&quot;Arm C&quot;</span>),</span>
@@ -165,8 +373,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">equivalence_diff =</span> <span class="fl">0.05</span>,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">soften_power =</span> <span class="fl">0.5</span> </span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div>
-<p>See <code>?setup_trial()</code> for more details on these arguments or <code>vignette(&quot;Basic-examples&quot;, &quot;adaptr&quot;)</code> for basic example trial specifications and a thorough review of the general settings, and <code>vignette(&quot;Advanced-example&quot;, &quot;adaptr&quot;)</code> for an <strong>advanced</strong> example including details on how to specify user-written functions for generating outcomes and posterior draws.</p>
-<p>We can print an overview of the trial specification by simply running:</p>
+<p>See <code>?setup_trial()</code> for more details on these arguments
+or <code>vignette(&quot;Basic-examples&quot;, &quot;adaptr&quot;)</code> for basic example
+trial specifications and a thorough review of the general settings, and
+<code>vignette(&quot;Advanced-example&quot;, &quot;adaptr&quot;)</code> for an
+<strong>advanced</strong> example including details on how to specify
+user-written functions for generating outcomes and posterior draws.</p>
+<p>We can print an overview of the trial specification by simply
+running:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>binom_trial</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trial specification: generic binomially distributed outcome trial</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Undesirable outcome</span></span>
@@ -190,7 +404,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Absolute equivalence difference: 0.05</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No futility threshold (not relevant - no common control)</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 0.5</span></span></code></pre></div>
-<p>By default, probabilities are shown with 3 decimals. This can be changed by explicitly <code>print()</code>ing the specification with the <code>prob_digits</code> arguments, for example:</p>
+<p>By default, probabilities are shown with 3 decimals. This can be
+changed by explicitly <code>print()</code>ing the specification with the
+<code>prob_digits</code> arguments, for example:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(binom_trial, <span class="at">prob_digits =</span> <span class="dv">2</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trial specification: generic binomially distributed outcome trial</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Undesirable outcome</span></span>
@@ -217,7 +433,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="simulate-a-single-trial" class="section level3">
 <h3>Simulate a single trial</h3>
-<p>Remember to define the <code>seed</code> to ensure reproducible results. The final trial results are wrapped here, but when used interactively, you can widen the console for non-wrapped output:</p>
+<p>Remember to define the <code>seed</code> to ensure reproducible
+results. The final trial results are wrapped here, but when used
+interactively, you can widen the console for non-wrapped output:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>trial_res <span class="ot">&lt;-</span> <span class="fu">run_trial</span>(binom_trial, <span class="at">seed =</span> <span class="dv">12345</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>trial_res</span>
@@ -243,7 +461,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Credible interval width: 95%</span></span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Number of posterior draws: 5000</span></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Posterior estimation method: medians with MAD-SDs</span></span></code></pre></div>
-<p>Again, we can choose the number of decimals with <code>print()</code>:</p>
+<p>Again, we can choose the number of decimals with
+<code>print()</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(trial_res, <span class="at">prob_digits =</span> <span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Single simulation result: generic binomially distributed outcome trial</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Undesirable outcome</span></span>
@@ -270,7 +489,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="simulate-multiple-trials" class="section level3">
 <h3>Simulate multiple trials</h3>
-<p>Generally, we want to run many simulations using the same trial specification to assess and compare performance metrics of different trial designs. This is the job of <code>run_trials()</code> (note the final <strong><em>s</em></strong>); again, note the use of a <code>base_seed</code> for reproducible results. Here we run 25 simulations (for tolerable run-time when producing this example), but in practice you will probably want to run more simulations.</p>
+<p>Generally, we want to run many simulations using the same trial
+specification to assess and compare performance metrics of different
+trial designs. This is the job of <code>run_trials()</code> (note the
+final <strong><em>s</em></strong>); again, note the use of a
+<code>base_seed</code> for reproducible results. Here we run 25
+simulations (for tolerable run-time when producing this example), but in
+practice you will probably want to run more simulations.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>trial_res_mult <span class="ot">&lt;-</span> <span class="fu">run_trials</span>(binom_trial, <span class="at">n_rep =</span> <span class="dv">25</span>, <span class="at">base_seed =</span> <span class="dv">67890</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>trial_res_mult</span>
@@ -297,16 +522,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Ideal design percentage: 100.0%</span></span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Simulation details:</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Simulation time: 0.738 secs</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Simulation time: 0.871 secs</span></span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Base random seed: 67890</span></span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Credible interval width: 95%</span></span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Number of posterior draws: 5000</span></span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Estimation method: posterior medians with MAD-SDs</span></span></code></pre></div>
-<p><code>run_trials()</code> can run simulations on several CPU cores concurrently: set the <code>cores</code> argument to some number greater than <code>1</code> (which is the default value, resulting in serial/non-parallel processing). As an aside, you can see the number of available CPU cores by calling <code>parallel::detectCores()</code>.</p>
+<p><code>run_trials()</code> can run simulations on several CPU cores
+concurrently: set the <code>cores</code> argument to some number greater
+than <code>1</code> (which is the default value, resulting in
+serial/non-parallel processing). As an aside, you can see the number of
+available CPU cores by calling <code>parallel::detectCores()</code>.</p>
 </div>
 <div id="get-the-results-of-multiple-trials" class="section level3">
 <h3>Get the results of multiple trials</h3>
-<p>Just printing the resulting object (as the last line above) is not necessarily what you want. <code>adaptr</code> has two convenience functions to get the results of multiple simulations of the same trial specification, <code>extract_results()</code> and <code>summary()</code>; see their documentation for details, e.g. on arm selection in trials not ending with superiority. The <code>extract_results()</code> function yields a tidy <code>data.frame</code> with one simulation per row:</p>
+<p>Just printing the resulting object (as the last line above) is not
+necessarily what you want. <code>adaptr</code> has two convenience
+functions to get the results of multiple simulations of the same trial
+specification, <code>extract_results()</code> and
+<code>summary()</code>; see their documentation for details, e.g. on arm
+selection in trials not ending with superiority. The
+<code>extract_results()</code> function yields a tidy
+<code>data.frame</code> with one simulation per row:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>extr_res <span class="ot">&lt;-</span> <span class="fu">extract_results</span>(trial_res_mult)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(extr_res)</span>
@@ -327,7 +563,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4           NA        NA</span></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 3.422824e-06        NA</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 4.852161e-05        NA</span></span></code></pre></div>
-<p><code>summary()</code> (as expected and known from, e.g., regression models in <code>R</code>) summarises the results in a human-friendly manner. Individual key results can be extracted from the resulting object or printed:</p>
+<p><code>summary()</code> (as expected and known from, e.g., regression
+models in <code>R</code>) summarises the results in a human-friendly
+manner. Individual key results can be extracted from the resulting
+object or printed:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>res_sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(trial_res_mult)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res_sum, <span class="at">digits =</span> <span class="dv">1</span>)</span>
@@ -354,7 +593,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Ideal design percentage: 100.0%</span></span>
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Simulation details:</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Simulation time: 0.738 secs</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Simulation time: 0.871 secs</span></span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Base random seed: 67890</span></span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Credible interval width: 95%</span></span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Number of posterior draws: 5000</span></span>
@@ -362,19 +601,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="visualise-trial-results" class="section level3">
 <h3>Visualise trial results</h3>
-<p>We need non-sparse results for <code>plot_history()</code> (but <em>not</em> for <code>plot_status()</code>), so first we re-run <code>run_trials()</code>:</p>
+<p>We need non-sparse results for <code>plot_history()</code> (but
+<em>not</em> for <code>plot_status()</code>), so first we re-run
+<code>run_trials()</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>trial_res_mult <span class="ot">&lt;-</span> <span class="fu">run_trials</span>(binom_trial, <span class="at">n_rep =</span> <span class="dv">25</span>, <span class="at">base_seed =</span> <span class="dv">67890</span>,</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>Note that the <code>adaptr</code> plotting functions require the <code>ggplot2</code> package. First, we plot the overall trial statuses according to the total number of patients randomised (this does <em>not</em> require <code>sparse = FALSE</code>):</p>
+<p>Note that the <code>adaptr</code> plotting functions require the
+<code>ggplot2</code> package. First, we plot the overall trial statuses
+according to the total number of patients randomised (this does
+<em>not</em> require <code>sparse = FALSE</code>):</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_status</span>(trial_res_mult, <span class="at">x_value =</span> <span class="st">&quot;total n&quot;</span>)</span></code></pre></div>
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
-<p>We can also plot the statuses for specific arms. In this example, <em>Arm A</em> is increasingly dropped for inferiority as simulations progress:</p>
+<p>We can also plot the statuses for specific arms. In this example,
+<em>Arm A</em> is increasingly dropped for inferiority as simulations
+progress:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_status</span>(trial_res_mult, <span class="at">x_value =</span> <span class="st">&quot;total n&quot;</span>, <span class="at">arm =</span> <span class="st">&quot;Arm A&quot;</span>)</span></code></pre></div>
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
-<p>Next, we plot the history of allocation probabilities at each adaptive analysis look. Intervals cover the inter-quartile range by default (<code>interval_width = 0.5</code>):</p>
+<p>Next, we plot the history of allocation probabilities at each
+adaptive analysis look. Intervals cover the inter-quartile range by
+default (<code>interval_width = 0.5</code>):</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_history</span>(trial_res_mult)</span></code></pre></div>
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
-<p>Plotting other summary metrics is possible; see <code>plot_history()</code>.</p>
+<p>Plotting other summary metrics is possible; see
+<code>plot_history()</code>.</p>
 </div>
 </div>
 <div id="citation" class="section level2">
