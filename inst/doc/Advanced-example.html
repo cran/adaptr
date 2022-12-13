@@ -120,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -383,7 +390,7 @@ under <strong>Contributing</strong>.</p>
 <p>Although the user-written custom functions below do not depend on the
 <code>adaptr</code> package, as the first thing we load the package:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adaptr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading adaptr package (version 1.1.1).</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading adaptr package (version 1.2.0).</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; See &#39;help(&quot;adaptr&quot;)&#39; or &#39;vignette(&quot;Overview&quot;, &quot;adaptr&quot;)&#39; for help.</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Further information available on https://inceptdk.github.io/adaptr/.</span></span></code></pre></div>
 <p>–and then set the global seed to ensure reproducible results:</p>
@@ -634,7 +641,7 @@ unstable results (see <code>setup_trial_binom()</code>).</p>
 <p>Finally, a custom function may be specified to calculate
 <strong>raw</strong> summary estimates in each arm; these raw estimates
 are <em>not</em> posterior estimates, but can be considered the maximum
-likelihood point estimates in this example). This function must take a
+likelihood point estimates in this example. This function must take a
 numeric vector (all outcomes in an arm) and return a single numeric
 value. This function is called separately for each arm. Because we
 express results as <em>percentages</em> and not <em>proportions</em> in
@@ -707,15 +714,18 @@ functions is carried out when the trial is setup:</p>
 <span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maximum sample size: 2000 </span></span>
 <span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maximum number of data looks: 20</span></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Planned looks after every 100 patients until maximum sample size</span></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Superiority threshold: 0.99 </span></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Inferiority threshold: 0.01 </span></span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Equivalence threshold: 0.9 (only checked for first control)</span></span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Absolute equivalence difference: 10</span></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No futility threshold</span></span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 1 (no softening)</span></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Additional info: Trial using beta-binomial conjugate prior models and beta(15, 45) priors in each arm.</span></span></code></pre></div>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Planned looks after every 100</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  patients have reached follow-up until final look after 2000 patients</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of patients randomised at each look:  100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Superiority threshold: 0.99 (all analyses)</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Inferiority threshold: 0.01 (all analyses)</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Equivalence threshold: 0.9 (all analyses) (only checked for first control)</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Absolute equivalence difference: 10</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No futility threshold</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 1 (no softening)</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Additional info: Trial using beta-binomial conjugate prior models and beta(15, 45) priors in each arm.</span></span></code></pre></div>
 <p>As <code>setup_trial()</code> runs with no errors or warnings, the
 custom trial has been successfully specified and may be run by
 <code>run_trial()</code> or <code>run_trials()</code>. If the custom
@@ -724,7 +734,7 @@ functions (or uses objects defined by the user outside these functions)
 or if functions loaded from non-base R packages are used, please be
 aware that exporting these objects/functions or prefixing them with
 their namespace is necessary if simulations are conducted using multiple
-cores. See <code>run_trial()</code> for additional details. func</p>
+cores. See <code>run_trial()</code> for additional details.</p>
 </div>
 
 

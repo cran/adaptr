@@ -187,3 +187,37 @@ setup_trial_binom(
   soften_power = 0.7
 )
 
+## -----------------------------------------------------------------------------
+setup_trial_binom(
+  arms = c("A", "B", "C", "D"),
+  control = "A",
+  true_ys = c(0.2, 0.22, 0.24, 0.18), 
+  
+  # Analyses conducted every time 100 patients have follow-up data available
+  data_looks = seq(from = 100, to = 1000, by = 100),
+  # Specify the number of patients randomised at each look - in this case, 200
+  # more patients are randomised than the number of patients that
+  # have follow-up data available at each look
+  randomised_at_looks = seq(from = 300, to = 1200, by = 100)
+)
+
+## -----------------------------------------------------------------------------
+setup_trial_binom(
+  arms = c("A", "B", "C", "D"),
+  control = "A",
+  true_ys = c(0.2, 0.22, 0.24, 0.18), 
+  
+  # Analyses conducted every time 100 patients have follow-up data available
+  data_looks = seq(from = 100, to = 1000, by = 100),
+
+  # Specify varying inferiority/superiority thresholds
+  # When specifying varying thresholds, the number of thresholds must match
+  # the number of analyses, and thresholds may never be stricter than the
+  # threshold used in the previous analysis
+  # Superiority threshold decreasing from 0.99 to 0.95 during the first five
+  # analyses, and remains stationary at 0.95 after that
+  superiority = c(seq(from = 0.99, to = 0.95, by = -0.01), rep(0.95, 5)),
+  # Similarly for inferiority thresholds, but in the opposite direction
+  inferiority = c(seq(from = 0.01, to = 0.05, by = 0.01), rep(0.05, 5)),
+)
+

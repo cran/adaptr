@@ -37,7 +37,13 @@ print(trial_res, prob_digits = 2)
 ## -----------------------------------------------------------------------------
 trial_res_mult <- run_trials(binom_trial, n_rep = 25, base_seed = 67890)
 
+## -----------------------------------------------------------------------------
 trial_res_mult
+
+## -----------------------------------------------------------------------------
+res_sum <- summary(trial_res_mult)
+
+print(res_sum, digits = 1)
 
 ## -----------------------------------------------------------------------------
 extr_res <- extract_results(trial_res_mult)
@@ -47,9 +53,15 @@ nrow(extr_res)
 head(extr_res)
 
 ## -----------------------------------------------------------------------------
-res_sum <- summary(trial_res_mult)
+perf_res <- check_performance(trial_res_mult, uncertainty = TRUE, n_boot = 1000,
+                              boot_seed = "base")
 
-print(res_sum, digits = 1)
+print(perf_res, digits = 3)
+
+## -----------------------------------------------------------------------------
+# Convergence plots for four performance metrics
+plot_convergence(trial_res_mult, metrics = c("size mean", "prob superior",
+                                             "rmse", "idp"))
 
 ## -----------------------------------------------------------------------------
 trial_res_mult <- run_trials(binom_trial, n_rep = 25, base_seed = 67890,
@@ -59,7 +71,7 @@ trial_res_mult <- run_trials(binom_trial, n_rep = 25, base_seed = 67890,
 plot_status(trial_res_mult, x_value = "total n")
 
 ## -----------------------------------------------------------------------------
-plot_status(trial_res_mult, x_value = "total n", arm = "Arm A")
+plot_status(trial_res_mult, x_value = "total n", arm = NA, ncol = 1)
 
 ## -----------------------------------------------------------------------------
 plot_history(trial_res_mult)
