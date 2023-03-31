@@ -38,6 +38,7 @@ setup_trial_binom(
   control = NULL,
   
   # Set inferiority/superiority thresholds (different values than the defaults)
+  # (see also the calibrate_trial() function)
   inferiority = 0.025,
   superiority = 0.975,
   

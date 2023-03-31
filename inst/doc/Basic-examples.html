@@ -349,7 +349,8 @@ randomisation (RAR), and combinations.</p>
 <code>setup_trial()</code>, but because trials with binary, binomially
 distributed and continuous, normally distributed outcomes are so common,
 the package comes with two convenience functions for specifying such
-trial designs: <code>setup_trial_binom()</code> and
+trial designs (using default priors only):
+<code>setup_trial_binom()</code> and
 <code>setup_trial_norm()</code>.</p>
 <p>To keep things simple, this vignette uses only the
 <code>setup_trial_binom()</code> function and focuses on settings that
@@ -357,6 +358,10 @@ apply to trial designs regardless of outcome type. The code is heavily
 annotated, but comments focus on settings not touched on earlier in the
 vignette (e.g. we do not keep annotating the <code>arm</code> and
 <code>true_ys</code> arguments).</p>
+<p>Keep in mind that the <code>calibrate_trial()</code> function can be
+used to calibrate a trial specification to obtain a specific value for a
+certain performance metric (e.g., the Bayesian type 1 error rate for
+trial specifications with no between-arm differences).</p>
 <p>For a general overview of how to use the <code>adaptr</code> package,
 please see <code>vignette(&quot;Overview&quot;, &quot;adaptr&quot;)</code>.</p>
 <p>An <strong>advanced</strong> example on how to specify a trial design
@@ -403,46 +408,47 @@ common control arm) are covered in this section.</p>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="cn">NULL</span>,</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set inferiority/superiority thresholds (different values than the defaults)</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">inferiority =</span> <span class="fl">0.025</span>,</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">superiority =</span> <span class="fl">0.975</span>,</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define that the outcome is desirable (as opposed to the default setting)</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">highest_is_best =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># No softening (the default setting, but made explicit here)</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">soften_power =</span> <span class="dv">1</span>,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use different simulation/summary settings than default</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">cri_width =</span> <span class="fl">0.89</span>, <span class="co"># 89% credible intervals</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_draws =</span> <span class="dv">1000</span>, <span class="co"># Only 1000 posterior draws in each arm</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">robust =</span> <span class="cn">TRUE</span>, <span class="co"># Summarise posteriors using medians/MAD-SDs (as default)</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Trial description (used by print methods)</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">description =</span> <span class="st">&quot;example trial specification 1&quot;</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trial specification: example trial specification 1</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Desirable outcome</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * No common control arm</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Best arm: B</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Arms, true outcomes, starting allocation probabilities </span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and allocation probability limits:</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  arms true_ys start_probs fixed_probs min_probs max_probs</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     A    0.30         0.3         0.3        NA        NA</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     B    0.35         0.3          NA       0.2       0.7</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     C    0.31         0.2          NA        NA        NA</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     D    0.27         0.2          NA        NA        NA</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maximum sample size: 1000 </span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maximum number of data looks: 8</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Planned data looks after:  300, 400, 500, 600, 700, 800, 900, 1000 patients have reached follow-up</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of patients randomised at each look:  300, 400, 500, 600, 700, 800, 900, 1000</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Superiority threshold: 0.975 (all analyses)</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Inferiority threshold: 0.025 (all analyses)</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No equivalence threshold</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No futility threshold (not relevant - no common control)</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 1 (no softening)</span></span></code></pre></div>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (see also the calibrate_trial() function)</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">inferiority =</span> <span class="fl">0.025</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">superiority =</span> <span class="fl">0.975</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define that the outcome is desirable (as opposed to the default setting)</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">highest_is_best =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># No softening (the default setting, but made explicit here)</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">soften_power =</span> <span class="dv">1</span>,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use different simulation/summary settings than default</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">cri_width =</span> <span class="fl">0.89</span>, <span class="co"># 89% credible intervals</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_draws =</span> <span class="dv">1000</span>, <span class="co"># Only 1000 posterior draws in each arm</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">robust =</span> <span class="cn">TRUE</span>, <span class="co"># Summarise posteriors using medians/MAD-SDs (as default)</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Trial description (used by print methods)</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">description =</span> <span class="st">&quot;example trial specification 1&quot;</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trial specification: example trial specification 1</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Desirable outcome</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * No common control arm</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; * Best arm: B</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Arms, true outcomes, starting allocation probabilities </span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and allocation probability limits:</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  arms true_ys start_probs fixed_probs min_probs max_probs</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     A    0.30         0.3         0.3        NA        NA</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     B    0.35         0.3          NA       0.2       0.7</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     C    0.31         0.2          NA        NA        NA</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     D    0.27         0.2          NA        NA        NA</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maximum sample size: 1000 </span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maximum number of data looks: 8</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Planned data looks after:  300, 400, 500, 600, 700, 800, 900, 1000 patients have reached follow-up</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of patients randomised at each look:  300, 400, 500, 600, 700, 800, 900, 1000</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Superiority threshold: 0.975 (all analyses)</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Inferiority threshold: 0.025 (all analyses)</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No equivalence threshold</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No futility threshold (not relevant - no common control)</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 1 (no softening)</span></span></code></pre></div>
 </div>
 <div id="example-2-equivalence-testing-decreasing-softening" class="section level3">
 <h3>Example 2: equivalence testing, decreasing softening</h3>
@@ -744,16 +750,16 @@ highest non-control arm (with re-scaling as necessary)</li>
 <span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No futility threshold</span></span>
 <span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Soften power for all analyses: 0.7</span></span></code></pre></div>
 </div>
-<div id="example-7-follow-up-or-data-collection-lag" class="section level3">
-<h3>Example 7: follow-up (or data collection) lag</h3>
+<div id="example-7-follow-up-and-data-collection-lag" class="section level3">
+<h3>Example 7: follow-up and data collection lag</h3>
 <p>This example uses the <code>randomised_at_looks</code> argument to
-specify follow-up (or data collection) lag. In real use cases, this
+specify follow-up and/or data collection lag. In real use cases, this
 should usually be considered, as this may affect the relative
 performance of different trial designs and the extent to which the
 ‘final’ results after all patients have reached follow-up and are
-analysed may differ from the results when from the adaptive analyses
-with some randomised patients not included due to outcome data not being
-available yet.</p>
+analysed may differ from the results from the adaptive analyses with
+some randomised patients not included due to outcome data not being
+available yet for these patients.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setup_trial_binom</span>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">arms =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="st">&quot;A&quot;</span>,</span>
@@ -798,7 +804,12 @@ superiority and inferiority stopping rules at different adaptive
 analyses. Varying probability thresholds may similarly be specified for
 stopping rules for equivalence and futility. Importantly, all
 probability thresholds must be specified such that each subsequent
-threshold is never stricter than the previous threshold</p>
+threshold is never stricter than the previous threshold. Varying
+thresholds may also be used to make some stopping rules first function
+at later analyses (e.g., as long as the stopping threshold for
+<code>superiority</code> is <code>1</code> and the stopping threshold
+for <code>inferiority</code> is <code>0</code>, trials will not be
+stopped and arms will not be dropped due to these rules).</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setup_trial_binom</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">arms =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="st">&quot;A&quot;</span>,</span>

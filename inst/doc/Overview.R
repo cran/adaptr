@@ -59,9 +59,15 @@ perf_res <- check_performance(trial_res_mult, uncertainty = TRUE, n_boot = 1000,
 print(perf_res, digits = 3)
 
 ## -----------------------------------------------------------------------------
+plot_metrics_ecdf(trial_res_mult)
+
+## -----------------------------------------------------------------------------
 # Convergence plots for four performance metrics
 plot_convergence(trial_res_mult, metrics = c("size mean", "prob superior",
                                              "rmse", "idp"))
+
+## -----------------------------------------------------------------------------
+check_remaining_arms(trial_res_mult)
 
 ## -----------------------------------------------------------------------------
 trial_res_mult <- run_trials(binom_trial, n_rep = 25, base_seed = 67890,

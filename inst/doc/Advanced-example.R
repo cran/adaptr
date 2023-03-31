@@ -44,14 +44,14 @@ get_ys_binom_custom <- function(allocs) {
 
 ## -----------------------------------------------------------------------------
 find_beta_params(
-  theta = 0.25, # Event ratio
+  theta = 0.25, # Event probability
   boundary = "lower",
   boundary_target = 0.15,
   interval_width = 0.95
 )
 
 ## ---- echo = FALSE------------------------------------------------------------
-# Helper function for plotting priors and posteriors together
+# Helper function for plotting priors and posteriors together in the vignette
 plot_prior_posterior <- function(events, non_events, prior_events, prior_non_events) {
   beta_curve <- function(prior_alpha, prior_beta, events = 0, non_events = 0, type = "prior") {
     ggplot2::geom_function(
